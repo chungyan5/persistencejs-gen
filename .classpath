@@ -9,9 +9,10 @@
 			<accessrule kind="accessible" pattern="com/sun/mirror/**"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/slim3-gen"/>
 	<classpathentry kind="lib" path="lib/commons-lang3-3.0-beta.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/persistencejs-sync"/>
 	<classpathentry kind="lib" path="lib/ant-1.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/slim3-gen-1.0.13.jar"/>
+	<classpathentry kind="lib" path="/usr/lib/jvm/java-6-sun/lib/tools.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
