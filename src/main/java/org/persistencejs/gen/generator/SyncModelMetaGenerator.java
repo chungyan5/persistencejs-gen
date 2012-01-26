@@ -17,10 +17,6 @@ package org.persistencejs.gen.generator;
 
 import static org.slim3.gen.ClassConstants.*;
 
-import java.util.Date;
-
-import org.slim3.gen.ClassConstants;
-import org.slim3.gen.ProductInfo;
 import org.slim3.gen.desc.AttributeMetaDesc;
 import org.slim3.gen.desc.ModelMetaDesc;
 import org.slim3.gen.generator.ModelMetaGenerator;
@@ -124,7 +120,7 @@ public class SyncModelMetaGenerator extends ModelMetaGenerator {
 	 */
 	protected void printJSONtoModelMethod(Printer printer) {
 		printer.println(
-				"public %1$s JSONtoModel(com.google.appengine.repackaged.org.json.JSONObject json, long timestamp) {",
+				"public %1$s JSONtoModel(org.json.JSONObject json, long timestamp) {",
 				modelMetaDesc.getModelClassName());
 		printer.indent();
 		printer.println("%1$s model;", modelMetaDesc.getModelClassName());
@@ -138,7 +134,7 @@ public class SyncModelMetaGenerator extends ModelMetaGenerator {
 		printer.indent();
 		printer.println("key = org.slim3.datastore.Datastore.createKey(this, json.getLong(\"id\"));");
 		printer.unindent();
-		printer.println("} catch (com.google.appengine.repackaged.org.json.JSONException e1) {");
+		printer.println("} catch (org.json.JSONException e1) {");
 		printer.indent();
 		printer.println("key = org.slim3.datastore.Datastore.createKey(this, json.getString(\"id\"));");
 		printer.unindent();
@@ -151,7 +147,7 @@ public class SyncModelMetaGenerator extends ModelMetaGenerator {
 		printer.indent();
 		printer.println("key = com.google.appengine.api.datastore.KeyFactory.createKey(kind, json.getLong(\"id\"));");
 		printer.unindent();
-		printer.println("} catch (com.google.appengine.repackaged.org.json.JSONException e2) {");
+		printer.println("} catch (org.json.JSONException e2) {");
 		printer.indent();
 		printer.println("key = com.google.appengine.api.datastore.KeyFactory.createKey(kind, json.getString(\"id\"));");
 		printer.unindent();
@@ -181,7 +177,7 @@ public class SyncModelMetaGenerator extends ModelMetaGenerator {
 					printer.indent();
 					printer.println("ref = org.slim3.datastore.Datastore.createKey(%1$sMeta.get(), json.getLong(%2$s));", attrJsonNameCap, attrJsonName);
 					printer.unindent();
-					printer.println("} catch (com.google.appengine.repackaged.org.json.JSONException e) {");
+					printer.println("} catch (org.json.JSONException e) {");
 					printer.indent();
 					printer.println("ref = org.slim3.datastore.Datastore.createKey(%1$sMeta.get(), json.getString(%2$s));", attrJsonNameCap, attrJsonName);
 					printer.unindent();
@@ -250,7 +246,7 @@ public class SyncModelMetaGenerator extends ModelMetaGenerator {
 		}
 		
 		printer.unindent();
-		printer.println("} catch (com.google.appengine.repackaged.org.json.JSONException e) {");
+		printer.println("} catch (org.json.JSONException e) {");
 		printer.indent();
 		printer.println("return null;");
 		printer.unindent();
@@ -269,11 +265,11 @@ public class SyncModelMetaGenerator extends ModelMetaGenerator {
 	 */
 	protected void printModelToJSONMethod(Printer printer) {
 		printer.println(
-				"public com.google.appengine.repackaged.org.json.JSONObject modelToJSON(%1$s model) {",
+				"public org.json.JSONObject modelToJSON(%1$s model) {",
 				modelMetaDesc.getModelClassName());
 		printer.indent();
 		printer.println("com.google.appengine.api.datastore.Key key = model.getKey();");
-		printer.println("com.google.appengine.repackaged.org.json.JSONObject json = new com.google.appengine.repackaged.org.json.JSONObject();");
+		printer.println("org.json.JSONObject json = new org.json.JSONObject();");
 		printer.println("try {");
 		printer.indent();
 		printer.println("json.put(\"id\", getNameOrId(key));");
@@ -296,7 +292,7 @@ public class SyncModelMetaGenerator extends ModelMetaGenerator {
 			}
 		}
 		printer.unindent();
-		printer.println("} catch (com.google.appengine.repackaged.org.json.JSONException e) {");
+		printer.println("} catch (org.json.JSONException e) {");
 		printer.indent();
 		printer.println("return null;");
 		printer.unindent();

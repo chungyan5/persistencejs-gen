@@ -4,6 +4,7 @@
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/test/resources"/>
 	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/slim3/gen"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
 		<accessrules>
 			<accessrule kind="accessible" pattern="com/sun/mirror/**"/>
@@ -12,7 +13,6 @@
 	<classpathentry kind="lib" path="lib/commons-lang3-3.0-beta.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/persistencejs-sync"/>
 	<classpathentry kind="lib" path="lib/ant-1.7.0.jar"/>
-	<classpathentry kind="lib" path="lib/slim3-gen-1.0.13.jar"/>
 	<classpathentry kind="lib" path="/usr/lib/jvm/java-6-sun/lib/tools.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
